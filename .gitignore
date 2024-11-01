@@ -1,5 +1,6 @@
 # build directory
 build/
 
-# 
+# json input files
 *.json
+!*.example.json
