@@ -128,7 +128,7 @@ func parseMultilineComment(commLines []interface{}) (string, error) {
 
 func parseArray(values []interface{}) (string, error) {
 	if utils.ContainsDifferentTypes(values) {
-		return "", fmt.Errorf("failed to parse array: array contains different types")
+		return "", fmt.Errorf("failed to parse array: array contains different value types")
 	}
 
 	strValues := make([]string, len(values))
@@ -141,7 +141,7 @@ func parseArray(values []interface{}) (string, error) {
 
 func parseVar(name string, value interface{}) (string, error) {
 	if !validator.IsNameValid(name) {
-		return "", fmt.Errorf("invalid variable name")
+		return "", fmt.Errorf("'%s' is invalid variable name", name)
 	}
 
 	valType := reflect.TypeOf(value).Kind()

@@ -23,8 +23,6 @@ func ToEclFile(text string, outputPath string) error {
 		return fmt.Errorf("'%s' is not a valid filename extension", ext)
 	}
 
-	fmt.Println(outputPath)
-
 	outputFile, err := os.Create(outputPath)
 	if err != nil {
 		return err

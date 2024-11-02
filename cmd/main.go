@@ -15,30 +15,31 @@ func init() {
 }
 
 func main() {
-	args := os.Args[1:]
 	flag.Parse()
 
+	args := flag.Args()
+
 	if len(args) == 0 {
-		fmt.Println("tlang: 0 arguments provided")
+		fmt.Println("ecl: 0 arguments provided")
 		return
 	}
 
 	jsonPath := args[0]
 	jsonFile, err := os.Open(jsonPath)
 	if err != nil {
-		fmt.Printf("tlang: %s\n", err.Error())
+		fmt.Printf("ecl: %s\n", err.Error())
 		return
 	}
 	defer jsonFile.Close()
 
 	src, err := io.ReadAll(jsonFile)
 	if err != nil {
-		fmt.Printf("tlang: %s\n", err.Error())
+		fmt.Printf("ecl: %s\n", err.Error())
 		return
 	}
 
 	if err = translate.Translate(src, flagOutput); err != nil {
-		fmt.Printf("tlang: %s\n", err.Error())
+		fmt.Printf("ecl: %s\n", err.Error())
 		return
 	}
 }
